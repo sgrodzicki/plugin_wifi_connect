@@ -53,13 +53,15 @@ class PluginWifiConnect {
   static Future<bool?> connectToSecureNetwork(String ssid, String password,
       {bool isWep = false,
       bool isWpa3 = false,
-      bool saveNetwork = false}) async {
+      bool saveNetwork = false,
+      bool isHidden = false}) async {
     final bool? connected = await _channel.invokeMethod<bool>('secureConnect', {
       'ssid': ssid,
       'password': password,
       'saveNetwork': saveNetwork,
       'isWep': isWep,
       'isWpa3': isWpa3,
+      'isHidden': isHidden,
     });
     return connected;
   }
